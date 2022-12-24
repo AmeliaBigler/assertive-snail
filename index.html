@@ -7,12 +7,216 @@
     <title>Code Quiz</title>
 </head>
 <body>
-    <h1>Code Quiz</h1>
-    <h2>Instructions</h2>
-    <p>You will have 60 seconds to answer as many questions as you can. 
-        Answer correctly and get a point. 
-        Answer incorrectly, and 3 seconds will be deducted from your remaining time.
-        When your timer runs out, you can save your score with your initials.
-        You can view high scores.</p>
+    <section id="instructions">
+        <h1>Code Quiz</h1>
+        <h2>Instructions</h2>
+        <p>You will have 60 seconds to answer as many questions as you can. 
+            Answer correctly and get a point. 
+            Answer incorrectly, and 3 seconds will be deducted from your remaining time.
+            When your timer runs out, you can save your score with your initials.
+            You can view high scores.</p>
+        <h2>Ready to Play?</h2>
+    </section>
+    <section id="questions">
+        <div id="q1">
+            <h3>What does CSS stand for?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Cascading Style Sheets
+                <input type="radio" name="choice" value="wrong"> Cascading Script Sheets
+                <input type="radio" name="choice" value="wrong"> Coding Script Sheets
+                <input type="radio" name="choice" value="wrong"> Coding Style sheets
+            </form>
+        </div>
+
+        <div id="q2">
+            <h3>What is the order of the CSS Box Model, from inside to outside?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Content, Padding, Border, Margin
+                <input type="radio" name="choice" value="wrong"> Content, Border, Padding, Margin
+                <input type="radio" name="choice" value="wrong"> Content, Margin, Padding, Border
+                <input type="radio" name="choice" value="wrong"> Content, Padding, Margin, Border
+            </form>
+        </div>
+
+        <div id="q3">
+            <h3>What does HTML stand for?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Hypertext Markup Language
+                <input type="radio" name="choice" value="wrong"> Hypertext Markdown Language
+                <input type="radio" name="choice" value="wrong"> Hypertext Mark Language
+                <input type="radio" name="choice" value="wrong"> Hypertext Model Language
+            </form>
+        </div>
+        
+        <div id="q4">
+            <h3>What does DOM stand for?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Document Object Model
+                <input type="radio" name="choice" value="wrong"> Detect Object Model
+                <input type="radio" name="choice" value="wrong"> Document Object Markup
+                <input type="radio" name="choice" value="wrong"> Document Online Model
+            </form>
+        </div>
+
+        <div id="q5">
+        <h3>What does API stand for?</h3>
+        <form>
+            <input type="radio" name="choice" value="correct"> Application Programming Interface
+            <input type="radio" name="choice" value="wrong"> Application Programming Internet
+            <input type="radio" name="choice" value="wrong"> Artificial Programming Interface
+            <input type="radio" name="choice" value="wrong"> Artificial Programming Intelligence
+        </form>
+        </div>
+
+        <div id="q6">
+            <h3>Which git command creates and switches to a new branch?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> git checkout -b new-branch
+                <input type="radio" name="choice" value="wrong"> git createswitch new-branch
+                <input type="radio" name="choice" value="wrong"> git new-branch
+                <input type="radio" name="choice" value="wrong"> git switch new-branch
+            </form>
+        </div>
+
+        <div id="q7">
+            <h3>Which of the following is a boolean?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> False 
+                <input type="radio" name="choice" value="wrong"> Undefined
+                <input type="radio" name="choice" value="wrong"> NaN
+                <input type="radio" name="choice" value="wrong"> =
+            </form>
+        </div>  
+            
+        <div id="q8">
+            <h3>Which of the following pairs are strictly equal to each other?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> 8, 8
+                <input type="radio" name="choice" value="wrong"> true, false
+                <input type="radio" name="choice" value="wrong"> 8, "8"
+                <input type="radio" name="choice" value="wrong"> "abc", "ABC"
+            </form>
+        </div>
+
+        <div id="q9">
+            <h3>How do you select an HTML ID in CSS?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> #ID-name
+                <input type="radio" name="choice" value="wrong"> .ID-name
+                <input type="radio" name="choice" value="wrong"> ID-name
+                <input type="radio" name="choice" value="wrong"> @ID-name
+            </form>
+        </div>
+        
+        <div id="q10">
+            <h3>Which of the following is NOT a git command?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> git cd
+                <input type="radio" name="choice" value="wrong"> git status
+                <input type="radio" name="choice" value="wrong"> git add -A
+                <input type="radio" name="choice" value="wrong"> git commit -m
+            </form>
+        </div>
+
+        <div id="q11">
+            <h3>What of the following is NOT a way to define a variable "foo" in JavaScript?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> foo() { console.log(3) }
+                <input type="radio" name="choice" value="wrong"> var foo = "abcdefg"
+                <input type="radio" name="choice" value="wrong"> let foo = 5
+                <input type="radio" name="choice" value="wrong"> const foo = 10 - 5
+            </form>
+        </div>
+
+        <div id="q12">
+            <h3>What language is a README typically written in?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Markdown
+                <input type="radio" name="choice" value="wrong"> CSS
+                <input type="radio" name="choice" value="wrong"> HTML
+                <input type="radio" name="choice" value="wrong"> JavaScript
+            </form>
+        </div>
+
+        <div id="q13">
+            <h3>What is a wireframe?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> A tool used to visualize the desired appearance of a webpage.
+                <input type="radio" name="choice" value="wrong"> An object in the DOM.
+                <input type="radio" name="choice" value="wrong"> A default web display model built in to browsers.
+                <input type="radio" name="choice" value="wrong"> A border around an HTML element.
+            </form>
+        </div> 
+
+        <div id="q14">
+            <h3>Which of the following is NOT an array?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> (1,2,3,4,5,6)
+                <input type="radio" name="choice" value="wrong"> [123456]
+                <input type="radio" name="choice" value="wrong"> [1,2,3,4,5,6]
+                <input type="radio" name="choice" value="wrong"> ["1","2","3","4","5","6"]
+            </form>
+        </div>
+        
+        <div id="q15">
+            <h3>What is an event listener in Javascript?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Code that is activated once a user interacts with a webpage in the specified way.
+                <input type="radio" name="choice" value="wrong"> Code that selects all of a specified element.
+                <input type="radio" name="choice" value="wrong"> Code that selects the first instance of a specified element. 
+                <input type="radio" name="choice" value="wrong"> Code that opens an alert window in the browser before the rest of the content is displayed.
+            </form>
+        </div>
+
+        <div id="q16">
+            <h3>Which of the following is a logic operator?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> ||
+                <input type="radio" name="choice" value="wrong"> ()
+                <input type="radio" name="choice" value="wrong"> ""
+                <input type="radio" name="choice" value="wrong"> []
+            </form>
+        </div>
+
+        <div id="q17">
+            <h3>Which JavaScript code will print results to the console?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> console.log()
+                <input type="radio" name="choice" value="wrong"> console.print()
+                <input type="radio" name="choice" value="wrong"> consolelog()
+                <input type="radio" name="choice" value="wrong"> log.console()
+            </form>
+        </div>
+
+        <div id="q18">
+            <h3>Which term is defined as "improving existing code with out changing functionality"?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> Refactoring
+                <input type="radio" name="choice" value="wrong"> Debugging
+                <input type="radio" name="choice" value="wrong"> Repositing
+                <input type="radio" name="choice" value="wrong"> Documenting
+            </form>
+        </div> 
+
+        <div id="q19">
+            <h3>Which of the following is true?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> All of the above.
+                <input type="radio" name="choice" value="wrong"> Globally scoped variables can be used locally.
+                <input type="radio" name="choice" value="wrong"> An array is a type of object.
+                <input type="radio" name="choice" value="wrong"> JavaScript uses zero-based indexing.
+            </form>
+        </div>
+
+        <div id="q20">
+            <h3>What is a media query in CSS?</h3>
+            <form>
+                <input type="radio" name="choice" value="correct"> a method to make a webpage responsive to the size of the viewport.
+                <input type="radio" name="choice" value="wrong"> a way to select an element from the HTML document.
+                <input type="radio" name="choice" value="wrong"> a property that can be assigned to an element.
+                <input type="radio" name="choice" value="wrong"> a method to attach images, gifs, videos, or audio files to a webpage.
+            </form>
+        </div> 
+    </section>
 </body>
 </html>
