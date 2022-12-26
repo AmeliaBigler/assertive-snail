@@ -1,0 +1,30 @@
+.card {
+    display: flex;
+    flex-direction: column;
+    width: 80%;
+    padding: 5px;
+    margin: 30px;
+}
+
+.card h3 {
+    font-size: 20pt;
+    padding: 5px;
+}
+
+form {
+    width: fit-content;
+}
+
+.opt {
+    display: flex;
+    flex-direction: row;
+    background-color: rgb(59, 17, 96);
+    color: white;
+    padding: 3px;
+    border-radius: 1em;
+    margin: 4px;
+}
+
+.opt p {
+    padding: 10px;
+}
