@@ -9,8 +9,10 @@
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 <body>
-    <section id="instructions">
+    <header>
         <h1>Code Quiz</h1>
+    </header>
+    <section id="instructions">
         <h2>Instructions</h2>
         <p>You will have 60 seconds to answer as many questions as you can. 
             Answer correctly and get a point. 
@@ -19,14 +21,42 @@
             You can view high scores.</p>
         <h2 id="play">Ready to Play?</h2>
     </section>
+    <section id="scores">
+        <h2>High Scores</h2>
+        <div id="first">
+            <h3>First Place</h3> 
+            <p>Initials<span id="initials1"></span></p>
+            <p>Score<span id="score1"></span></p>
+        </div>
+        <div id="second">
+            <h3>Second Place</h3>
+            <p>Initials<span id="initials2"></span></p>
+            <p>Score<span id="score2"></span></p>
+        </div>
+        <div id="third">
+            <h3>Third Place</h3> 
+            <p>Initials<span id="initials3"></span></p>
+            <p>Score<span id="score3"></span></p>
+        </div>
+        <div id="fourth">
+            <h3>Fourth Place</h3> 
+            <p>Initials<span id="initials4"></span></p>
+            <p>Score<span class="score4"></span></p>
+        </div>
+        <div id="fifth">
+            <h3>Fifth Place</h3> 
+            <p>Initials<span class="initials5"></span></p>
+            <p>Score<span class="score5"></span></p>
+        </div>
+    </section>
     <section id="questions">
         <div class="card" id="q1">
-            <h3>What does CSS stand for?</h3>
+            <h3>What is local storage?</h3>
             <section class="answers">
-                <div class="correct"> <p>Cascading Style Sheets</p></div>
-                <div class="opt"> <p>Cascading Script Sheets</p></div>
-                <div class="opt"> <p>Coding Script Sheets</p></div>
-                <div class="opt"> <p>Coding Style sheets</p></div>
+                <div class="correct"> <p>a web API that allows data to be stored directly on the browser</p></div>
+                <div class="opt"> <p>a method that can be run on objects within the DOM</p></div>
+                <div class="opt"> <p>a type of event listener</p></div>
+                <div class="opt"> <p>a parameter needed for a function to be invoked</p></div>
             </section>
         </div>
 
@@ -43,7 +73,7 @@
         <div class="card" id="q3">
             <h3>What does HTML stand for?</h3>
             <section class="answers">
-                <div class="opt"> <p>Hypertext Markup Language</p></div>
+                <div class="correct"> <p>Hypertext Markup Language</p></div>
                 <div class="opt"> <p>Hypertext Markdown Language</p></div>
                 <div class="opt"> <p>Hypertext Mark Language</p></div>
                 <div class="opt"> <p>Hypertext Model Language</p></div>
@@ -53,7 +83,7 @@
         <div class="card" id="q4">
             <h3>What does DOM stand for?</h3>
              <section class="answers">
-                <div class="opt"> <p>Document Object Model</p></div>
+                <div class="correct"> <p>Document Object Model</p></div>
                 <div class="opt"> <p>Detect Object Model</p></div>
                 <div class="opt"> <p>Document Object Markup</p></div>
                 <div class="opt"> <p>Document Online Model</p></div>
@@ -219,6 +249,17 @@
                 <div class="opt"> <p>a method to attach images, gifs, videos, or audio files to a webpage.</p></div>
              </section>
         </div> 
+    </section>
+    <section id="scoreForm">
+        <form method="POST">
+            <div class="inputInitials">
+              <label for="initials">Initials</label>
+              <input type="text" name="initials" id="initials" placeholder="AAA" />
+            </div>
+            <div id="userScore"></div> 
+            <div id="msg"></div>
+            <button id="submit">Submit Score!</button>
+          </form>
     </section>
     <script src="./assets/script.js"></script>
 </body>
