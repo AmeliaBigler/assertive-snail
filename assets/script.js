@@ -10,4 +10,22 @@
 // once the timer reaches zero OR the user completes all questions, then the questions become invisible and the score section becomes visible.
 // the user can choose to save their score and initials. The user can choose to play again.
 // the high score section saves the top X highest scores and initials. 
+// the high score form will validate the submission for initials. 
 // the user can view high scores from the instructions page or the score page. Otherwise, the high score section is hidden.
+
+var readyToPlayBtn = document.querySelector("#play");
+
+var correctBtns = document.querySelectorAll(".correct"); // creates a NodeList
+var incorrectBtns = document.querySelectorAll(".opt");
+
+correctBtns.forEach(function(elem) {
+    elem.addEventListener("click", function() {
+        elem.style.backgroundColor = "green";
+    });
+});
+
+incorrectBtns.forEach(function(elem) {
+    elem.addEventListener("click", function() {
+        elem.style.backgroundColor = "red";
+    });
+});
