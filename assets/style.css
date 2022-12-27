@@ -1,3 +1,7 @@
+/* #questions {
+    display: none;
+} */
+
 .card {
     display: flex;
     flex-direction: column;
@@ -11,11 +15,11 @@
     padding: 5px;
 }
 
-form {
+.answers {
     width: fit-content;
 }
 
-.opt {
+.correct, .opt {
     display: flex;
     flex-direction: row;
     background-color: rgb(59, 17, 96);
@@ -25,6 +29,6 @@ form {
     margin: 4px;
 }
 
-.opt p {
+.correct p, .opt p {
     padding: 10px;
 }
