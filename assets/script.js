@@ -13,6 +13,47 @@
 // the high score form will validate the submission for initials. 
 // the user can view high scores from the instructions page or the score page. Otherwise, the high score section is hidden.
 
+// these variable are the locations of where the top scores will populate.
+var firstInitialsSpan = document.querySelector("#initials1");
+var firstScoreSpan = document.querySelector("#score1");
+var secondInitialsSpan = document.querySelector("#initials2");
+var secondScoreSpan = document.querySelector("#score2");
+var thirdInitialsSpan = document.querySelector("#initials3");
+var thirdScoreSpan = document.querySelector("#score3");
+var fourthInitialsSpan = document.querySelector("#initials4");
+var fourthScoreSpan = document.querySelector("#score4");
+var fifthInitialsSpan = document.querySelector("#initials5");
+var fifthScoreSpan = document.querySelector("#score5");
+
+// this is the funtion to determine where to place the score on the scoreboard.
+// make an array of objects.
+// after each score is saved, push result in to array.
+// sort the array. 
+// render array into top five placement spans by array index.
+
+// TEST function to render high scores
+function renderHighScore() {
+    var initials = localStorage.getItem("initials");
+    firstInitialsSpan.textContent = initials;
+}
+
+// event listener for submit-score button
+var submitButton = document.querySelector("#submit");
+submitButton.addEventListener("click", function(event) {
+    event.preventDefault();
+
+    // these variables are where users will input their initials.
+    var initials = document.querySelector("#initials").value; 
+    // var score = *time remaining on timer.
+    
+    // this local storage is how new initials/scores will be stored
+    localStorage.setItem("initials", initials);
+    // localStorage.setItem("score", score)
+
+    renderHighScore();
+});
+
+// Variables for taking the quiz.
 var playButton = document.querySelector("#play");
 
 var correctBtns = document.querySelectorAll(".correct"); // creates a NodeList
@@ -30,44 +71,24 @@ incorrectBtns.forEach(function(elem) {
     });
 });
 
-
-// these variable are the locations of where the top scores will populate.
-var firstInitialsSpan = document.querySelector("#initials1");
-var firstScoreSpan = document.querySelector("#score1");
-var secondInitialsSpan = document.querySelector("#initials2");
-var secondScoreSpan = document.querySelector("#score2");
-var thirdInitialsSpan = document.querySelector("#initials3");
-var thirdScoreSpan = document.querySelector("#score3");
-var fourthInitialsSpan = document.querySelector("#initials4");
-var fourthScoreSpan = document.querySelector("#score4");
-var fifthInitialsSpan = document.querySelector("#initials5");
-var fifthScoreSpan = document.querySelector("#score5");
-
-// this is the funtion to determine where to place the score on the scoreboard.
-// if (score > first place) {
-    // replace first place and bump others down
-// } else if score > second place {
-    // replace ""
-// }
-
-// TEST function to render high scores
-function renderHighScore() {
-    var initials = localStorage.getItem("initials");
-    firstInitialsSpan.textContent = initials;
+// all functions that run when Play button is pushed.
+playButton.addEventListener("click", function() {
+    setTimer();
 }
+)
 
-// event listener for submit button
-var submitButton = document.querySelector("#submit");
-submitButton.addEventListener("click", function(event) {
-    event.preventDefault();
+// timer variables and functions.
+var timerSpan = document.querySelector("#timer");
 
-    // these variables are where users will input their initials.
-    var initials = document.querySelector("#initials").value; 
-    // var score = *time remaining on timer.
-    
-    // this local storage is how new initials/scores will be stored
-    localStorage.setItem("initials", initials);
-    // localStorage.setItem("score", score)
-
-    renderHighScore();
-});
+function setTimer() {
+    var secondsLeft = 60;
+    var timerInterval = setInterval(function() {
+      secondsLeft--;
+      timerSpan.textContent = secondsLeft;
+  
+      if(secondsLeft === 0) {
+        clearInterval(timerInterval);
+      } 
+    //   add else if (answer last question) {pause interval}
+    }, 1000);
+  }

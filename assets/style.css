@@ -2,6 +2,18 @@
     display: none;
 } */
 
+#questions {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#timerCard {
+    align-self: flex-end;
+    padding: 20px;
+    margin-right: 10%;
+}
+
 .card {
     display: flex;
     flex-direction: column;
