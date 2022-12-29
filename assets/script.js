@@ -41,6 +41,7 @@ function renderHighScores() {
     for (var i = 0; i < scoreArray.length; i++) {
 
         // scoreArray.sort.score(function(a,b){return b.score - a.score});
+        // TODO: to sort, must make sure parsed JSON scores are numbers, not strings.
 
         firstInitialsSpan.textContent = scoreArray[0].initials;
         firstScoreSpan.textContent = scoreArray[0].score;
@@ -83,18 +84,6 @@ var playButton = document.querySelector("#play");
 var correctBtns = document.querySelectorAll(".correct"); // creates a NodeList
 var incorrectBtns = document.querySelectorAll(".opt");
 
-correctBtns.forEach(function(elem) {
-    elem.addEventListener("click", function() {
-        elem.style.backgroundColor = "green";
-    });
-});
-
-incorrectBtns.forEach(function(elem) {
-    elem.addEventListener("click", function() {
-        elem.style.backgroundColor = "red";
-    });
-});
-
 // all functions that run when Play button is pushed.
 playButton.addEventListener("click", function() {
     setTimer();
@@ -103,24 +92,40 @@ playButton.addEventListener("click", function() {
 
 // timer variables and functions.
 var timerSpan = document.querySelector("#timer");
-var userScoreSpan = document.querySelector("#userSecondsLeft");
+var userScoreSpan = document.querySelector("#userScoreSpan");
 var lastQuestion = document.querySelector("#q20");
+var timerCard = document.querySelector("#timerCard")
 
 function setTimer() {
+    var secondsLeft = 60;
     var clickLastQ = false
     lastQuestion.addEventListener("click", function() {clickLastQ = true;});
-    var secondsLeft = 60;
-    var timerInterval = setInterval(function() {
-      secondsLeft--;
-      timerSpan.textContent = secondsLeft;
-  
-      if(secondsLeft === 0) {
-        userSecondsLeftSpan.textContent = secondsLeft;
-        clearInterval(timerInterval);
-      } else if (clickLastQ === true) {
-        userScoreSpan.textContent = secondsLeft;
-        clearInterval(timerInterval);}
-    }, 1000);
-  }
+    clickIncorrect = false;
 
-  init();
+    var timerInterval = setInterval(function() {
+        secondsLeft--;
+        timerSpan.textContent = secondsLeft;
+        
+        incorrectBtns.forEach(function(element) {
+            element.addEventListener("click", function() {
+                clickIncorrect = true;
+            });
+        });
+
+        if (secondsLeft > 0 && clickIncorrect === true) {
+            timerCard.style.backgroundColor = "red"; //TODO: blink red for 2 seconds.
+            secondsLeft = secondsLeft - 3;
+        } else if (secondsLeft === 0 || secondsLeft < 0) {
+            userScoreSpan.textContent = secondsLeft;
+            clearInterval(timerInterval);
+        } else if (clickLastQ === true) {
+            userScoreSpan.textContent = secondsLeft;
+            clearInterval(timerInterval);
+        }
+
+        clickIncorrect = false;
+
+    }, 1000);
+}
+
+init();
