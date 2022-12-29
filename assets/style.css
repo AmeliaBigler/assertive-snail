@@ -41,6 +41,14 @@
     margin: 4px;
 }
 
+.correct:active {
+    background-color: green;
+}
+
+.opt:active {
+    background-color: red;
+}
+
 .correct p, .opt p {
     padding: 10px;
 }
