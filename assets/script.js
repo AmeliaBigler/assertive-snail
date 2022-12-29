@@ -25,16 +25,39 @@ var fourthScoreSpan = document.querySelector("#score4");
 var fifthInitialsSpan = document.querySelector("#initials5");
 var fifthScoreSpan = document.querySelector("#score5");
 
-// this is the funtion to determine where to place the score on the scoreboard.
-// make an array of objects.
-// after each score is saved, push result in to array.
-// sort the array. 
-// render array into top five placement spans by array index.
+var scoreArray = [];
 
-// TEST function to render high scores
-function renderHighScore() {
-    var initials = localStorage.getItem("initials");
-    firstInitialsSpan.textContent = initials;
+function init() {
+    var storedScores = JSON.parse(localStorage.getItem("userScoreAndInitials"));
+
+    if (storedScores !== null) {
+        scoreArray.push(storedScores);
+    }
+
+    renderHighScores();
+}
+
+function renderHighScores() {
+    for (var i = 0; i < scoreArray.length; i++) {
+
+        // scoreArray.sort.score(function(a,b){return b.score - a.score});
+
+        firstInitialsSpan.textContent = scoreArray[0].initials;
+        firstScoreSpan.textContent = scoreArray[0].score;
+
+        // secondInitialsSpan.textContent = scoreArray[0].initials;
+        // secondScoreSpan.textContent = scoreArray[0].score;
+
+        // thirdInitialsSpan.textContent = scoreArray[0].initials;
+        // thirdScoreSpan.textContent = scoreArray[0].score;
+
+        // fourthInitialsSpan.textContent = scoreArray[0].initials;
+        // fourthScoreSpan.textContent = scoreArray[0].score;
+
+        // fifthInitialsSpan.textContent = scoreArray[0].initials;
+        // fifthScoreSpan.textContent = scoreArray[0].score;
+
+    }
 }
 
 // event listener for submit-score button
@@ -42,15 +65,16 @@ var submitButton = document.querySelector("#submit");
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    // these variables are where users will input their initials.
-    var initials = document.querySelector("#initials").value; 
-    // var score = *time remaining on timer.
+    // this object is where users initials and scores will be paired.
+    var userScoreAndInitials = {
+        initials: document.querySelector("#initials").value.trim(),
+        score: userScoreSpan.textContent
+    };
     
-    // this local storage is how new initials/scores will be stored
-    localStorage.setItem("initials", initials);
-    // localStorage.setItem("score", score)
+    // this local storage is how initials/score objects will be stored.
+    localStorage.setItem("userScoreAndInitials", JSON.stringify(userScoreAndInitials));
 
-    renderHighScore();
+    renderHighScores();
 });
 
 // Variables for taking the quiz.
@@ -79,16 +103,24 @@ playButton.addEventListener("click", function() {
 
 // timer variables and functions.
 var timerSpan = document.querySelector("#timer");
+var userScoreSpan = document.querySelector("#userSecondsLeft");
+var lastQuestion = document.querySelector("#q20");
 
 function setTimer() {
+    var clickLastQ = false
+    lastQuestion.addEventListener("click", function() {clickLastQ = true;});
     var secondsLeft = 60;
     var timerInterval = setInterval(function() {
       secondsLeft--;
       timerSpan.textContent = secondsLeft;
   
       if(secondsLeft === 0) {
+        userSecondsLeftSpan.textContent = secondsLeft;
         clearInterval(timerInterval);
-      } 
-    //   add else if (answer last question) {pause interval}
+      } else if (clickLastQ === true) {
+        userScoreSpan.textContent = secondsLeft;
+        clearInterval(timerInterval);}
     }, 1000);
   }
+
+  init();
