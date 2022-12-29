@@ -41,12 +41,12 @@
         <div id="fourth">
             <h3>Fourth Place</h3> 
             <p>Initials<span id="initials4"></span></p>
-            <p>Score<span class="score4"></span></p>
+            <p>Score<span id="score4"></span></p>
         </div>
         <div id="fifth">
             <h3>Fifth Place</h3> 
-            <p>Initials<span class="initials5"></span></p>
-            <p>Score<span class="score5"></span></p>
+            <p>Initials<span id="initials5"></span></p>
+            <p>Score<span id="score5"></span></p>
         </div>
     </section>
     <section id="questions">
@@ -64,22 +64,22 @@
         </div>
 
         <div class="card" id="q2">
-            <h3>What is the order of the CSS Box Model, from inside to outside?</h3>
+            <h3>What does JSON stand for?</h3>
             <section class="answers">
-                <div class="correct"><p>Content, Padding, Border, Margin</p></div>
-                <div class="opt"> <p>Content, Border, Padding, Margin</p></div>
-                <div class="opt"> <p>Content, Margin, Padding, Border</p></div>
-                <div class="opt"> <p>Content, Padding, Margin, Border</p></div>
+                <div class="correct"><p>JavaScript Object Notation</p></div>
+                <div class="opt"> <p>Justify Storage Object Notation</p></div>
+                <div class="opt"> <p>JavaScript Object Node</p></div>
+                <div class="opt"> <p>Justify Server Object Notation</p></div>
             </section>
         </div>
 
         <div class="card" id="q3">
-            <h3>What does HTML stand for?</h3>
+            <h3>What is the first argument when calling localStorage.setItem()?</h3>
             <section class="answers">
-                <div class="correct"> <p>Hypertext Markup Language</p></div>
-                <div class="opt"> <p>Hypertext Markdown Language</p></div>
-                <div class="opt"> <p>Hypertext Mark Language</p></div>
-                <div class="opt"> <p>Hypertext Model Language</p></div>
+                <div class="correct"> <p>The key</p></div>
+                <div class="opt"> <p>The JSON.stringify method</p></div>
+                <div class="opt"> <p>The event listener</p></div>
+                <div class="opt"> <p>The console</p></div>
             </section>
         </div>
         
@@ -104,7 +104,7 @@
         </div>
 
         <div class="card" id="q6">
-            <h3>Which git command creates and switches to a new branch?</h3>
+            <h3>Which git command creates and switches to a new branch?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>git checkout -b new-branch</p></div>
                 <div class="opt"> <p>git createswitch new-branch</p></div>
@@ -134,7 +134,7 @@
         </div>
 
         <div class="card" id="q9">
-            <h3>How do you select an HTML ID in CSS?</h3>
+            <h3>How do you select an HTML ID in CSS?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>#ID-name</p></div>
                 <div class="opt"> <p>.ID-name</p></div>
@@ -144,7 +144,7 @@
         </div>
         
         <div class="card" id="q10">
-            <h3>Which of the following is NOT a git command?</h3>
+            <h3>Which of the following is NOT a git command?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>git cd</p></div>
                 <div class="opt"> <p>git status</p></div>
@@ -164,7 +164,7 @@
         </div>
 
         <div class="card" id="q12">
-            <h3>What language is a README typically written in?</h3>
+            <h3>What language is a README typically written in?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>Markdown</p></div>
                 <div class="opt"> <p>CSS</p></div>
@@ -174,7 +174,7 @@
         </div>
 
         <div class="card" id="q13">
-            <h3>What is a wireframe?</h3>
+            <h3>What is a wireframe?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>A tool used to visualize the desired appearance of a webpage.</p></div>
                 <div class="opt"> <p>An object in the DOM.</p></div>
@@ -224,7 +224,7 @@
         </div>
 
         <div class="card" id="q18">
-            <h3>Which term is defined as "improving existing code with out changing functionality"?</h3>
+            <h3>Which term is defined as "improving existing code with out changing functionality"?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>Refactoring</p></div>
                 <div class="opt"> <p>Debugging</p></div>
@@ -244,7 +244,7 @@
         </div>
 
         <div class="card" id="q20">
-            <h3>What is a media query in CSS?</h3>
+            <h3>What is a media query in CSS?</h3> <!-- change to JS Q -->
              <section class="answers">
                 <div class="correct"> <p>a method to make a webpage responsive to the size of the viewport.</p></div>
                 <div class="opt"> <p>a way to select an element from the HTML document.</p></div>
@@ -259,7 +259,7 @@
               <label for="initials">Initials</label>
               <input type="text" name="initials" id="initials" placeholder="AAA" />
             </div>
-            <div id="userScore"></div> 
+            <div id="userScore"><p>Your Score: <span id="userSecondsLeft"></span></p></div> 
             <div id="msg"></div>
             <button id="submit">Submit Score!</button>
           </form>
