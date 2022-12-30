@@ -1,7 +1,41 @@
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    font-size: 300%;
+    padding: 2%;
+    margin-bottom: 40px;
+}
+
+h2 {
+    font-size: 200%;
+    padding: 2%;
+}
+
+#instructions, #scores, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 20px;
+}
+
+#instructions p {
+    width: 70%;
+}
+
 #quiz {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+}
+
+#questions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 #timerCard {
@@ -47,4 +81,17 @@
 
 .correct p, .opt p {
     padding: 10px;
+}
+
+button:hover {
+    cursor: pointer;
+}
+
+button {
+    background-color: rgb(59, 17, 96);
+    color: white;
+    font-size: 150%;
+    padding: 20px;
+    border-radius: 1em;
+    margin: 20px;
 }

@@ -111,6 +111,7 @@ var timerCard = document.querySelector("#timerCard")
 
 function setTimer() {
     var secondsLeft = 60;
+    timerSpan.textContent = 60;
     var clickLastQ = false;
     lastQuestion.addEventListener("click", function() {clickLastQ = true;})
     clickIncorrect = false;
