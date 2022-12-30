@@ -1,8 +1,4 @@
-/* #questions, #scores, #scoreForm {
-    display: none;
-} */
-
-#questions {
+#quiz {
     display: flex;
     flex-direction: column;
     justify-content: center;
