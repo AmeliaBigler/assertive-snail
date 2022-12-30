@@ -14,6 +14,7 @@
 // the user can view high scores from the instructions page or the score page. Otherwise, the high score section is hidden.
 
 // these variable are the locations of where the top scores will populate.
+// TODO: make these spans into an array, then index scoreArray into it in function renderHighScores?
 var firstInitialsSpan = document.querySelector("#initials1");
 var firstScoreSpan = document.querySelector("#score1");
 var secondInitialsSpan = document.querySelector("#initials2");
@@ -27,6 +28,12 @@ var fifthScoreSpan = document.querySelector("#score5");
 
 var scoreArray = [];
 
+// variables for different displays. used to set displays as visible/none.
+var instructionsDisplay = document.querySelector("#instructions");
+var quizDisplay = document.querySelector("#quiz");
+var scoreDisplay = document.querySelector("#scores");
+var scoreForm = document.querySelector("#scoreForm");
+
 function init() {
     var storedScores = JSON.parse(localStorage.getItem("userScoreAndInitials"));
 
@@ -35,6 +42,11 @@ function init() {
     }
 
     renderHighScores();
+
+    instructionsDisplay.style.display = "default";
+    scoreDisplay.style.display = "none";
+    quizDisplay.style.display = "none";
+    scoreForm.style.display = "none";
 }
 
 function renderHighScores() {
@@ -81,12 +93,13 @@ submitButton.addEventListener("click", function(event) {
 // Variables for taking the quiz.
 var playButton = document.querySelector("#play");
 
-var correctBtns = document.querySelectorAll(".correct"); // creates a NodeList
-var incorrectBtns = document.querySelectorAll(".opt");
-
 // all functions that run when Play button is pushed.
 playButton.addEventListener("click", function() {
+    quizDisplay.style.display = "flex";
+    instructionsDisplay.style.display = "none";
     setTimer();
+    // function for displaying one question at a time. switch to next question on click.
+    quizCardDisplay();
 }
 )
 
@@ -98,9 +111,10 @@ var timerCard = document.querySelector("#timerCard")
 
 function setTimer() {
     var secondsLeft = 60;
-    var clickLastQ = false
-    lastQuestion.addEventListener("click", function() {clickLastQ = true;});
+    var clickLastQ = false;
+    lastQuestion.addEventListener("click", function() {clickLastQ = true;})
     clickIncorrect = false;
+    var incorrectBtns = document.querySelectorAll(".opt");
 
     var timerInterval = setInterval(function() {
         secondsLeft--;
@@ -109,23 +123,54 @@ function setTimer() {
         incorrectBtns.forEach(function(element) {
             element.addEventListener("click", function() {
                 clickIncorrect = true;
-            });
-        });
+            })
+        })
 
         if (secondsLeft > 0 && clickIncorrect === true) {
-            timerCard.style.backgroundColor = "red"; //TODO: blink red for 2 seconds.
+            // timerCard.style.backgroundColor = "red"; //TODO: blink red for 2 seconds.
             secondsLeft = secondsLeft - 3;
         } else if (secondsLeft === 0 || secondsLeft < 0) {
             userScoreSpan.textContent = secondsLeft;
             clearInterval(timerInterval);
+            gameOver();
         } else if (clickLastQ === true) {
             userScoreSpan.textContent = secondsLeft;
             clearInterval(timerInterval);
+            gameOver();
         }
 
         clickIncorrect = false;
 
     }, 1000);
+
+    function gameOver() {
+        console.log("Game Over") //test
+        quizDisplay.style.display = "none";
+        scoreForm.style.display = "flex";
+    }
+
+}
+
+var answerButtons = document.querySelectorAll("#answers").children; // creates a NodeList
+var quizCardArray = document.querySelector("#questions").children;
+
+function quizCardDisplay() {
+    
+    for(var i=0; i < quizCardArray.length; i++) {
+        console.log(quizCardArray[i]); //test
+        // var clickAnswer = false;
+        // answerButtons.forEach(function(element) {
+        //     element.addEventListener("click", function() {
+        //     clickAnswer = true;
+        //     })
+        // })
+
+        // quizCardArray[i].style.display = "active";
+
+        // if (clickAnswer === true) {
+        // quizCardArray[i].style.display = "none";
+        // }
+    }
 }
 
 init();
