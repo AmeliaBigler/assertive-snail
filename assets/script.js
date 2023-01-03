@@ -26,6 +26,21 @@ var fourthScoreSpan = document.querySelector("#score4");
 var fifthInitialsSpan = document.querySelector("#initials5");
 var fifthScoreSpan = document.querySelector("#score5");
 
+let highInitialsSpanArray = [
+    firstInitialsSpan, 
+    secondInitialsSpan,
+    thirdInitialsSpan,
+    fourthInitialsSpan,
+    fifthInitialsSpan
+];
+let highScoresSpanArray = [
+    firstScoreSpan,
+    secondScoreSpan,
+    thirdScoreSpan,
+    fourthScoreSpan,
+    fifthScoreSpan
+];
+
 var scoreArray = [];
 
 // variables for different displays. used to set displays as visible/none.
@@ -55,20 +70,8 @@ function renderHighScores() {
         // scoreArray.sort.score(function(a,b){return b.score - a.score});
         // TODO: to sort, must make sure parsed JSON scores are numbers, not strings.
 
-        firstInitialsSpan.textContent = scoreArray[0].initials;
-        firstScoreSpan.textContent = scoreArray[0].score;
-
-        // secondInitialsSpan.textContent = scoreArray[0].initials;
-        // secondScoreSpan.textContent = scoreArray[0].score;
-
-        // thirdInitialsSpan.textContent = scoreArray[0].initials;
-        // thirdScoreSpan.textContent = scoreArray[0].score;
-
-        // fourthInitialsSpan.textContent = scoreArray[0].initials;
-        // fourthScoreSpan.textContent = scoreArray[0].score;
-
-        // fifthInitialsSpan.textContent = scoreArray[0].initials;
-        // fifthScoreSpan.textContent = scoreArray[0].score;
+        highInitialsSpanArray[i].textContent = scoreArray[i].initials;
+        highScoresSpanArray[i].textContent = scoreArray[i].score;
 
     }
 }
@@ -88,7 +91,7 @@ submitButton.addEventListener("click", function(event) {
     localStorage.setItem("userScoreAndInitials", JSON.stringify(userScoreAndInitials));
 
     renderHighScores();
-});
+})
 
 // Variables for taking the quiz.
 var playButton = document.querySelector("#play");
@@ -97,11 +100,10 @@ var playButton = document.querySelector("#play");
 playButton.addEventListener("click", function() {
     quizDisplay.style.display = "flex";
     instructionsDisplay.style.display = "none";
-    setTimer();
+    initTimer();
     // function for displaying one question at a time. switch to next question on click.
     quizCardDisplay();
-}
-)
+})
 
 // timer variables and functions.
 var timerSpan = document.querySelector("#timer");
@@ -109,17 +111,17 @@ var userScoreSpan = document.querySelector("#userScoreSpan");
 var lastQuestion = document.querySelector("#q20");
 var timerCard = document.querySelector("#timerCard")
 
-function setTimer() {
+function initTimer() {
     var secondsLeft = 60;
-    timerSpan.textContent = 60;
+    
     var clickLastQ = false;
     lastQuestion.addEventListener("click", function() {clickLastQ = true;})
     clickIncorrect = false;
     var incorrectBtns = document.querySelectorAll(".opt");
 
     var timerInterval = setInterval(function() {
-        secondsLeft--;
         timerSpan.textContent = secondsLeft;
+        secondsLeft--;
         
         incorrectBtns.forEach(function(element) {
             element.addEventListener("click", function() {
@@ -141,25 +143,22 @@ function setTimer() {
         }
 
         clickIncorrect = false;
-
     }, 1000);
+}
 
-    function gameOver() {
-        console.log("Game Over") //test
-        quizDisplay.style.display = "none";
-        scoreForm.style.display = "flex";
-    }
-
+function gameOver() {
+    console.log("Game Over") //test
+    quizDisplay.style.display = "none";
+    scoreForm.style.display = "flex";
 }
 
 var answerButtons = document.querySelectorAll("#answers").children; // creates a NodeList
 var quizCardArray = document.querySelector("#questions").children;
 
 function quizCardDisplay() {
-    
     for(var i=0; i < quizCardArray.length; i++) {
         console.log(quizCardArray[i]); //test
-        // var clickAnswer = false;
+        var clickAnswer = false;
         // answerButtons.forEach(function(element) {
         //     element.addEventListener("click", function() {
         //     clickAnswer = true;
