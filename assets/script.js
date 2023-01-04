@@ -14,7 +14,6 @@
 // the user can view high scores from the instructions page or the score page. Otherwise, the high score section is hidden.
 
 // these variable are the locations of where the top scores will populate.
-// TODO: make these spans into an array, then index scoreArray into it in function renderHighScores?
 var firstInitialsSpan = document.querySelector("#initials1");
 var firstScoreSpan = document.querySelector("#score1");
 var secondInitialsSpan = document.querySelector("#initials2");
@@ -95,6 +94,8 @@ submitButton.addEventListener("click", function(event) {
 
 // Variables for taking the quiz.
 var playButton = document.querySelector("#play");
+var incorrectBtns = document.querySelectorAll(".opt");
+var correctBtns = document.querySelectorAll(".correct");
 
 // all functions that run when Play button is pushed.
 playButton.addEventListener("click", function() {
@@ -117,7 +118,6 @@ function initTimer() {
     var clickLastQ = false;
     lastQuestion.addEventListener("click", function() {clickLastQ = true;})
     clickIncorrect = false;
-    var incorrectBtns = document.querySelectorAll(".opt");
 
     var timerInterval = setInterval(function() {
         timerSpan.textContent = secondsLeft;
@@ -152,25 +152,26 @@ function gameOver() {
     scoreForm.style.display = "flex";
 }
 
-var answerButtons = document.querySelectorAll("#answers").children; // creates a NodeList
-var quizCardArray = document.querySelector("#questions").children;
+// TODO: remove onclick from HTML and replace here in script. 
+// correctBtns.forEach.onclick = function(){plusCards(1)};
+// incorrectBtns.forEach.onclick = function(){plusCards(1)};
+
+let cardIndex = 1;
+
+// Next controls
+function plusCards(n) {
+  cardIndex += n
+  quizCardDisplay();
+}
 
 function quizCardDisplay() {
-    for(var i=0; i < quizCardArray.length; i++) {
-        console.log(quizCardArray[i]); //test
-        var clickAnswer = false;
-        // answerButtons.forEach(function(element) {
-        //     element.addEventListener("click", function() {
-        //     clickAnswer = true;
-        //     })
-        // })
+    var quizCardArray = Array.from(document.querySelector("#questions").children)
+    
+    quizCardArray.forEach(function(element) {
+        element.style.display = "none";
+    });
 
-        // quizCardArray[i].style.display = "active";
-
-        // if (clickAnswer === true) {
-        // quizCardArray[i].style.display = "none";
-        // }
-    }
+    quizCardArray[cardIndex-1].style.display = "flex";
 }
 
 init();
