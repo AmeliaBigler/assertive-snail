@@ -7,22 +7,22 @@ body {
 header {
     font-size: 300%;
     padding: 2%;
-    margin-bottom: 40px;
+    margin-bottom: 10%;
 }
 
 h2 {
     font-size: 200%;
-    padding: 2%;
+    margin-bottom: 10%;
 }
 
-#instructions, #scores, form {
+#instructions, #highScores, form {
     display: flex;
     flex-direction: column;
     align-items: center;
     line-height: 20px;
 }
 
-#instructions p {
+#instructions p, #highScores p {
     width: 70%;
 }
 
@@ -39,7 +39,6 @@ h2 {
 }
 
 #timerCard {
-    align-self: flex-end;
     padding: 20px;
     margin-right: 10%;
 }
@@ -69,6 +68,7 @@ h2 {
     padding: 3px;
     border-radius: 1em;
     margin: 4px;
+    cursor: pointer;
 }
 
 .correct:active {
