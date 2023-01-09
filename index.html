@@ -13,8 +13,8 @@
         <h1>JavaScript Quiz</h1>
     </header>
     <section id="instructions">
+        <button id="highScoreBtn">View High Scores</button>
         <h2>Instructions</h2>
-        <!-- TODO: add high score tab/button (text content switches to instructions when viewing high score tab) -->
         <p>You will have 60 seconds to answer all 20 quiz questions. 
             3 seconds will be deducted from your remaining time for each incorrect answer.
             Your final score is the remaining time after all questions are answered.
@@ -23,6 +23,7 @@
         <button id="play">Play!</button>
     </section>
     <section id="highScores">
+        <button class="home">Back to Home Page</button>
         <h2>High Scores</h2>
         <div id="scores">
             <div id="first">
@@ -108,12 +109,12 @@
             </div>
 
             <div class="card" id="q6">
-                <h3>Which git command creates and switches to a new branch?</h3> <!-- change to JS Q -->
+                <h3>What is a JavaScript property?</h3> 
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>git checkout -b new-branch</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git createswitch new-branch</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git new-branch</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git switch new-branch</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>a value associated with a JavaScript object</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>an object contained within curly brackets</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>a default styling element</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>a logic operator</p></div>
                 </section>
             </div>
 
@@ -138,22 +139,22 @@
             </div>
 
             <div class="card" id="q9">
-                <h3>How do you select an HTML ID in CSS?</h3> <!-- change to JS Q -->
+                <h3>How do you select an HTML ID in JavaScript?</h3>
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>#ID-name</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>.ID-name</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>ID-name</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>@ID-name</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>document.querySelector('#ID-name');</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>document.querySelector('.ID-name');</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>document.querySelector(#ID-name);</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>document.querySelector(.ID-name);</p></div>
                 </section>
             </div>
             
             <div class="card" id="q10">
-                <h3>Which of the following is NOT a git command?</h3> <!-- change to JS Q -->
+                <h3>What are the first two arguments passed in to a setInterval method?</h3> 
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>git cd</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git status</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git add -A</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>git commit -m</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>function, milliseconds</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>function, seconds</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>parameter, seconds</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>parameter, milliseconds</p></div>
                 </section>
             </div>
 
@@ -168,22 +169,22 @@
             </div>
 
             <div class="card" id="q12">
-                <h3>What language is a README typically written in?</h3> <!-- change to JS Q -->
+                <h3>An object is contained within:</h3>
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>Markdown</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>CSS</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>HTML</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>JavaScript</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>curly brackets</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>square brackets</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>parenthesis</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>angled brackets</p></div>
                 </section>
             </div>
 
             <div class="card" id="q13">
-                <h3>What is a wireframe?</h3> <!-- change to JS Q -->
+                <h3>What type of data is a JSON stored as?</h3>
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>A tool used to visualize the desired appearance of a webpage.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>An object in the DOM.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>A default web display model built in to browsers.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>A border around an HTML element.</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>a string</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>an object</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>an array</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>an integer</p></div>
                 </section>
             </div> 
 
@@ -228,7 +229,7 @@
             </div>
 
             <div class="card" id="q18">
-                <h3>Which term is defined as "improving existing code with out changing functionality"?</h3> <!-- change to JS Q -->
+                <h3>Which term is defined as "improving existing code with out changing functionality"?</h3>
                 <section class="answers">
                     <div class="correct" onclick="plusCards(1)"> <p>Refactoring</p></div>
                     <div class="opt" onclick="plusCards(1)"> <p>Debugging</p></div>
@@ -248,12 +249,12 @@
             </div>
 
             <div class="card" id="q20">
-                <h3>What is a media query in CSS?</h3> <!-- change to JS Q -->
+                <h3>What is a method?</h3> <!-- change to JS Q -->
                 <section class="answers">
-                    <div class="correct" onclick="plusCards(1)"> <p>a method to make a webpage responsive to the size of the viewport.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>a way to select an element from the HTML document.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>a property that can be assigned to an element.</p></div>
-                    <div class="opt" onclick="plusCards(1)"> <p>a method to attach images, gifs, videos, or audio files to a webpage.</p></div>
+                    <div class="correct" onclick="plusCards(1)"> <p>a function stored as an object property</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>a type of object</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>an array index</p></div>
+                    <div class="opt" onclick="plusCards(1)"> <p>a type of variable</p></div>
                 </section>
             </div> 
         </div>
@@ -268,7 +269,7 @@
             <div id="msg"></div>
             <button id="submit">Submit Score!</button>
             <p>Return to Home Page with out submitting your score:</p>
-            <button id="cancel">Back to Home Page</button>
+            <button class="home">Back to Home Page</button>
           </form>
     </section>
     <script src="./assets/script.js"></script>
