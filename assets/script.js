@@ -1,6 +1,10 @@
-// the high score form will validate the submission for initials. 
+// variables for different displays. used to set displays as flex/none.
+var instructionsDisplay = document.querySelector("#instructions");
+var quizDisplay = document.querySelector("#quiz");
+var scoreDisplay = document.querySelector("#highScores");
+var scoreForm = document.querySelector("#scoreForm");
 
-// these variable are the locations of where the top scores will populate.
+// these variable are the spans where the top scores will populate.
 var firstInitialsSpan = document.querySelector("#initials1");
 var firstScoreSpan = document.querySelector("#score1");
 var secondInitialsSpan = document.querySelector("#initials2");
@@ -29,12 +33,7 @@ let highScoresSpanArray = [
 
 var scoreArray = [];
 
-// variables for different displays. used to set displays as visible/none.
-var instructionsDisplay = document.querySelector("#instructions");
-var quizDisplay = document.querySelector("#quiz");
-var scoreDisplay = document.querySelector("#highScores");
-var scoreForm = document.querySelector("#scoreForm");
-
+// init functions.
 function init() {
     renderHighScores();
 
@@ -57,19 +56,18 @@ function renderHighScores() {
         var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
 
         scoreArray.sort(function(a,b){return parseInt(b.score) - parseInt(a.score)});
-        console.log(scoreArray);
 
         highInitialsSpanArray[i].textContent = scoreArray[i].initials;
         highScoresSpanArray[i].textContent = scoreArray[i].score;
     }
 }
 
-// event listener for submit-score button
+// event listeners for submit, viewHighScore, and home buttons.
 var submitButton = document.querySelector("#submit");
 submitButton.addEventListener("click", function(event) {
     event.preventDefault();
 
-    // this object is where users initials and scores will be paired.
+    // this object is where users initials and scores are paired.
     var userScoreAndInitials = {
         initials: document.querySelector("#initials").value.trim(),
         score: userScoreSpan.textContent
@@ -102,14 +100,40 @@ homeButton.addEventListener('click', function(){
     scoreForm.style.display = "none";
 })
 
-// Variables for taking the quiz.
+// Variables and event listeners for taking the quiz.
 var playButton = document.querySelector("#play");
-var incorrectBtns = document.querySelectorAll(".opt");
-var correctBtns = document.querySelectorAll(".correct");
+var timerSpan = document.querySelector("#timer");
+var userScoreSpan = document.querySelector("#userScoreSpan");
+var timerCard = document.querySelector("#timerCard")
+var secondsLeft = 60;
+
+var firstQuestion = document.querySelector("#q1");
+var lastQuestion = document.querySelector("#q20");
+firstQuestion.addEventListener("click", function(){gradeMessage.style.display = "flex";})
+lastQuestion.addEventListener("click", function() {clickLastQ = true;})
+
 var gradeMessage = document.querySelector("#grade");
 var gradeSpan = document.querySelector("#gradeSpan");
+var incorrectBtns = document.querySelectorAll(".opt");
+var correctBtns = document.querySelectorAll(".correct");
 
-// all functions that run when Play button is pushed.
+incorrectBtns.forEach(function(element) {
+    element.addEventListener("click", function() {
+        secondsLeft = secondsLeft - 3;
+    timerCard.style.backgroundColor = "red";
+    setTimeout(function(){timerCard.style.backgroundColor = "white"}, 1000);
+    gradeSpan.textContent = "incorrect. 3 seconds deducted."
+    plusCards(1);
+    })
+})
+
+correctBtns.forEach(function(element) {
+    element.addEventListener("click", function() {
+        gradeSpan.textContent = "correct! Well done!";
+        plusCards(1);
+    })
+})
+
 playButton.addEventListener("click", function() {
     quizDisplay.style.display = "flex";
     instructionsDisplay.style.display = "none";
@@ -118,33 +142,16 @@ playButton.addEventListener("click", function() {
     quizCardDisplay();
 })
 
-// timer variables and functions.
-var timerSpan = document.querySelector("#timer");
-var userScoreSpan = document.querySelector("#userScoreSpan");
-var firstQuestion = document.querySelector("#q1");
-var lastQuestion = document.querySelector("#q20");
-var timerCard = document.querySelector("#timerCard")
-var secondsLeft = 60;
-
+// functions for taking the quiz.
 function initTimer() {
     var clickLastQ = false;
-    clickIncorrect = false;
-    firstQuestion.addEventListener("click", function(){gradeMessage.style.display = "flex";})
-    lastQuestion.addEventListener("click", function() {clickLastQ = true;})
+    secondsLeft = 60;
 
     var timerInterval = setInterval(function() {
         timerSpan.textContent = secondsLeft;
         secondsLeft--;
         
-        incorrectBtns.forEach(function(element) {
-            element.addEventListener("click", function() {
-                clickIncorrect = true;
-            })
-        })
-
-        if (secondsLeft > 0 && clickIncorrect === true) {
-            incorrectEvent();
-        } else if (secondsLeft === 0 || secondsLeft < 0) {
+        if (secondsLeft === 0 || secondsLeft < 0) {
             userScoreSpan.textContent = secondsLeft;
             clearInterval(timerInterval);
             gameOver();
@@ -154,38 +161,23 @@ function initTimer() {
             gameOver();
         }
 
-        clickIncorrect = false;
     }, 1000);
 }
-
-function incorrectEvent() {
-    secondsLeft = secondsLeft - 3;
-    timerCard.style.backgroundColor = "red";
-    setTimeout(function(){timerCard.style.backgroundColor = "white"}, 1000);
-    gradeSpan.textContent = "incorrect. 3 seconds deducted."
-}
-
-correctBtns.forEach(function(element) {
-    element.addEventListener("click", function() {
-        gradeSpan.textContent = "correct! Well done!";
-    })
-})
 
 function gameOver() {
     quizDisplay.style.display = "none";
     scoreForm.style.display = "flex";
 }
 
-// TODO: remove onclick from HTML and replace here in script. 
-// correctBtns.forEach.onclick = function(){plusCards(1)};
-// incorrectBtns.forEach.onclick = function(){plusCards(1)};
-
+// Quiz card variables and functions
 let cardIndex = 1;
 
-// Next quiz card controls
 function plusCards(n) {
-  cardIndex += n
-  quizCardDisplay();
+    if (cardIndex <= 20) {
+    cardIndex += n
+    quizCardDisplay()
+    }
+    else {cardIndex = 1};
 }
 
 function quizCardDisplay() {
