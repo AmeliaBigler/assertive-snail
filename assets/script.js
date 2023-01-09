@@ -28,8 +28,7 @@ let highScoresSpanArray = [
     fifthScoreSpan
 ];
 
-var scoreArray = []; //set the array in to local storage? JSON stringify?
-console.log(scoreArray); //test
+var scoreArray = [];
 
 // variables for different displays. used to set displays as visible/none.
 var instructionsDisplay = document.querySelector("#instructions");
@@ -48,18 +47,22 @@ function init() {
 
 function renderHighScores() {
     var storedScores = JSON.parse(localStorage.getItem("userScoreAndInitials"));
+    var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
     if (storedScores !== null) {
         scoreArray.push(storedScores);
+        localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
+        localStorage.setItem("userScoreAndInitials", null);
     }
 
-    for (var i = 0; i < scoreArray.length; i++) {
+    for (var i = 0; i < 5; i++) {
+        var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
 
-        // scoreArray.sort.score(function(a,b){return b.score - a.score});
+        scoreArray.sort(function(a,b){return parseInt(b.score) - parseInt(a.score)});
         // TODO: to sort, must make sure parsed JSON scores are numbers, not strings.
+        console.log(scoreArray);
 
         highInitialsSpanArray[i].textContent = scoreArray[i].initials;
         highScoresSpanArray[i].textContent = scoreArray[i].score;
-
     }
 }
 
