@@ -31,7 +31,24 @@ let highScoresSpanArray = [
     fifthScoreSpan
 ];
 
-var scoreArray = [];
+var scoreArray = [
+    {initials: 'placeholder',
+    score: 0
+    },
+    {initials: 'placeholder',
+    score: 0
+    },
+    {initials: 'placeholder',
+    score: 0
+    },    
+    {initials: 'placeholder',
+    score: 0
+    },
+    {initials: 'placeholder',
+    score: 0
+    },
+];
+localStorage.setItem("scoreArray", JSON.stringify(scoreArray));
 
 // init functions.
 function init() {

@@ -19,9 +19,9 @@ Time is deducted for each incorrect answer.
 Users high scores and initials can be submitted via a form.
 If they are submitted, they are saved in local storage, sorted, and displayed when the user views High Scores. 
 
-![Website Screenshot] (./assets/screenshot.png)
+![Website Screenshot](./assets/screenshot.png)
 
-[Deployed Website Link] (https://ameliabigler.github.io/assertive-snail/)
+[Deployed Website Link](https://ameliabigler.github.io/assertive-snail/)
 
 ## Credits
 
