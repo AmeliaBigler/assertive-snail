@@ -1,4 +1,3 @@
-// after the user selects an answer a message will appear to validate (correct/incorrect) their answer.
 // the high score form will validate the submission for initials. 
 
 // these variable are the locations of where the top scores will populate.
@@ -107,26 +106,30 @@ homeButton.addEventListener('click', function(){
 var playButton = document.querySelector("#play");
 var incorrectBtns = document.querySelectorAll(".opt");
 var correctBtns = document.querySelectorAll(".correct");
+var gradeMessage = document.querySelector("#grade");
+var gradeSpan = document.querySelector("#gradeSpan");
 
 // all functions that run when Play button is pushed.
 playButton.addEventListener("click", function() {
     quizDisplay.style.display = "flex";
     instructionsDisplay.style.display = "none";
+    gradeMessage.style.display = "none";
     initTimer();
-    // function for displaying one question at a time. switch to next question on click.
     quizCardDisplay();
 })
 
 // timer variables and functions.
 var timerSpan = document.querySelector("#timer");
 var userScoreSpan = document.querySelector("#userScoreSpan");
+var firstQuestion = document.querySelector("#q1");
 var lastQuestion = document.querySelector("#q20");
 var timerCard = document.querySelector("#timerCard")
-var secondsLeft = 10;
+var secondsLeft = 60;
 
 function initTimer() {
     var clickLastQ = false;
     clickIncorrect = false;
+    firstQuestion.addEventListener("click", function(){gradeMessage.style.display = "flex";})
     lastQuestion.addEventListener("click", function() {clickLastQ = true;})
 
     var timerInterval = setInterval(function() {
@@ -140,7 +143,7 @@ function initTimer() {
         })
 
         if (secondsLeft > 0 && clickIncorrect === true) {
-            incorrectAnimation();
+            incorrectEvent();
         } else if (secondsLeft === 0 || secondsLeft < 0) {
             userScoreSpan.textContent = secondsLeft;
             clearInterval(timerInterval);
@@ -155,14 +158,20 @@ function initTimer() {
     }, 1000);
 }
 
-function incorrectAnimation() {
+function incorrectEvent() {
     secondsLeft = secondsLeft - 3;
-    console.log('incorrect'); //test
-    // timerCard.style.backgroundColor = "red"; //TODO: blink red for 2 seconds.
+    timerCard.style.backgroundColor = "red";
+    setTimeout(function(){timerCard.style.backgroundColor = "white"}, 1000);
+    gradeSpan.textContent = "incorrect. 3 seconds deducted."
 }
 
+correctBtns.forEach(function(element) {
+    element.addEventListener("click", function() {
+        gradeSpan.textContent = "correct! Well done!";
+    })
+})
+
 function gameOver() {
-    console.log("Game Over") //test
     quizDisplay.style.display = "none";
     scoreForm.style.display = "flex";
 }
