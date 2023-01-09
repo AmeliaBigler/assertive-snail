@@ -39,7 +39,7 @@ var scoreForm = document.querySelector("#scoreForm");
 function init() {
     renderHighScores();
 
-    instructionsDisplay.style.display = "default";
+    instructionsDisplay.style.display = "flex";
     scoreDisplay.style.display = "none";
     quizDisplay.style.display = "none";
     scoreForm.style.display = "none";
@@ -58,7 +58,6 @@ function renderHighScores() {
         var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
 
         scoreArray.sort(function(a,b){return parseInt(b.score) - parseInt(a.score)});
-        // TODO: to sort, must make sure parsed JSON scores are numbers, not strings.
         console.log(scoreArray);
 
         highInitialsSpanArray[i].textContent = scoreArray[i].initials;
@@ -84,6 +83,22 @@ submitButton.addEventListener("click", function(event) {
 
     instructionsDisplay.style.display = "none";
     scoreDisplay.style.display = "flex";
+    quizDisplay.style.display = "none";
+    scoreForm.style.display = "none";
+})
+
+var viewHighScoreButton = document.querySelector('#highScoreBtn');
+viewHighScoreButton.addEventListener('click', function(){
+    instructionsDisplay.style.display = "none";
+    scoreDisplay.style.display = "flex";
+    quizDisplay.style.display = "none";
+    scoreForm.style.display = "none";
+})
+
+var homeButton = document.querySelector('.home');
+homeButton.addEventListener('click', function(){
+    instructionsDisplay.style.display = "flex";
+    scoreDisplay.style.display = "none";
     quizDisplay.style.display = "none";
     scoreForm.style.display = "none";
 })
@@ -158,7 +173,7 @@ function gameOver() {
 
 let cardIndex = 1;
 
-// Next controls
+// Next quiz card controls
 function plusCards(n) {
   cardIndex += n
   quizCardDisplay();
