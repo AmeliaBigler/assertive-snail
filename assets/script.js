@@ -52,7 +52,7 @@ function renderHighScores() {
         localStorage.setItem("userScoreAndInitials", null);
     }
 
-    if (scoreArray.length > 1){
+    if (scoreArray !== null && scoreArray.length > 1){
             for (var i = 0; i < 5; i++) {
                 var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
 
