@@ -105,12 +105,10 @@ var playButton = document.querySelector("#play");
 var timerSpan = document.querySelector("#timer");
 var userScoreSpan = document.querySelector("#userScoreSpan");
 var timerCard = document.querySelector("#timerCard")
-var secondsLeft = 60;
+var secondsLeft = 180;
 
 var firstQuestion = document.querySelector("#q1");
-var lastQuestion = document.querySelector("#q20");
 firstQuestion.addEventListener("click", function(){gradeMessage.style.display = "flex";})
-lastQuestion.addEventListener("click", function() {clickLastQ = true;})
 
 var gradeMessage = document.querySelector("#grade");
 var gradeSpan = document.querySelector("#gradeSpan");
@@ -145,7 +143,10 @@ playButton.addEventListener("click", function() {
 // functions for taking the quiz.
 function initTimer() {
     var clickLastQ = false;
-    secondsLeft = 60;
+    secondsLeft = 180;
+    timerSpan.textContent = secondsLeft;
+    var lastQuestion = document.querySelector("#q20");
+    lastQuestion.addEventListener("click", function() {clickLastQ = true;})
 
     var timerInterval = setInterval(function() {
         timerSpan.textContent = secondsLeft;
@@ -160,7 +161,6 @@ function initTimer() {
             clearInterval(timerInterval);
             gameOver();
         }
-
     }, 1000);
 }
 
@@ -173,7 +173,7 @@ function gameOver() {
 let cardIndex = 1;
 
 function plusCards(n) {
-    if (cardIndex <= 20) {
+    if (cardIndex <= 19) {
     cardIndex += n
     quizCardDisplay()
     }
