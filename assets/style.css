@@ -7,12 +7,18 @@ body {
 header {
     font-size: 300%;
     padding: 2%;
-    margin-bottom: 10%;
+    margin-bottom: 1%;
 }
 
 h2 {
     font-size: 200%;
-    margin-bottom: 10%;
+    padding: 2%;
+    margin-bottom: 2%;
+}
+
+h3 {
+    font-size: 20pt;
+    padding: 5px;
 }
 
 #instructions, #highScores, form {
@@ -22,8 +28,19 @@ h2 {
     line-height: 20px;
 }
 
-#instructions p, #highScores p {
+#instructions p {
     width: 70%;
+}
+
+#scores div {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#scores p {
+    width: fit-content;
 }
 
 #quiz {
@@ -40,7 +57,11 @@ h2 {
 
 #timerCard {
     padding: 20px;
-    margin-right: 10%;
+    border-style: solid;
+    border-color:rgb(59, 17, 96);
+    border-width: 3px;
+    border-radius: 1em;
+    margin-bottom: 2%;
 }
 
 .card {
@@ -49,11 +70,6 @@ h2 {
     width: 80%;
     padding: 5px;
     margin: 30px;
-}
-
-.card h3 {
-    font-size: 20pt;
-    padding: 5px;
 }
 
 .answers {
