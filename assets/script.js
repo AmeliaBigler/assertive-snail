@@ -52,14 +52,16 @@ function renderHighScores() {
         localStorage.setItem("userScoreAndInitials", null);
     }
 
-    for (var i = 0; i < 5; i++) {
-        var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
+    if (scoreArray.length > 1){
+            for (var i = 0; i < 5; i++) {
+                var scoreArray = JSON.parse(localStorage.getItem("scoreArray"));
 
-        scoreArray.sort(function(a,b){return parseInt(b.score) - parseInt(a.score)});
+                scoreArray.sort(function(a,b){return parseInt(b.score) - parseInt(a.score)});
 
-        highInitialsSpanArray[i].textContent = scoreArray[i].initials;
-        highScoresSpanArray[i].textContent = scoreArray[i].score;
-    }
+                highInitialsSpanArray[i].textContent = scoreArray[i].initials;
+                highScoresSpanArray[i].textContent = scoreArray[i].score;
+            }
+        }
 }
 
 // event listeners for submit, viewHighScore, and home buttons.
