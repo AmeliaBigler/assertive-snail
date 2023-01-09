@@ -112,7 +112,8 @@ viewHighScoreButton.addEventListener('click', function(){
 })
 
 var homeButton = document.querySelector('.home');
-homeButton.addEventListener('click', function(){
+homeButton.addEventListener('click', function(event){
+    event.preventDefault();
     instructionsDisplay.style.display = "flex";
     scoreDisplay.style.display = "none";
     quizDisplay.style.display = "none";
